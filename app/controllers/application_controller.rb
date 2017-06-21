@@ -11,4 +11,17 @@ class ApplicationController < ActionController::Base
     end
   end
   
+  def read(result)
+    code = result.code
+    name = result['itemName']
+    url = result.url
+    image_url = result['mediumImageUrls'].first['imageUrl'].gsub('?_ex=128x128', '')
+    return {
+      code: code,
+      name: name,
+      url: url,
+      image_url: image_url,
+    }
+  end
+  
 end
