@@ -16,7 +16,7 @@ class ItemsController < ApplicationController
         hits: 20,
       })
       results.each do |result|
-        item = Item.new(read(result))
+        item = Item.find_or_initialize_by(read(result))
         @items << item
       end
     end
